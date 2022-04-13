@@ -1,0 +1,62 @@
+<p-table
+  *ngIf="contacts$ | async"
+  [value]="(contacts$ | async)!"
+  responsiveLayout="scroll"
+>
+  <ng-template pTemplate="caption">
+    <div class="header" style="font-size: 1.5rem">
+      <div>Contacts</div>
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input
+          type="text"
+          pInputText
+          placeholder="Search"
+          [ngModel]="search$ | async"
+          (ngModelChange)="searchContacts($event)"
+        />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>#</th>
+      <th>Image</th>
+      <th>FirstName</th>
+      <th>Surname</th>
+      <th>Phone number</th>
+      <th>Date Of Birth</th>
+      <th>Address</th>
+      <th>IBAN</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-contact let-rowIndex="rowIndex">
+    <tr>
+      <td>{{ rowIndex + 1 | tableIndex }}</td>
+      <td>
+        <p-avatar
+          [label]="
+            { name: contact.firstName, surname: contact.surname } | userInitials
+          "
+          size="large"
+          [style]="{ 'background-color': '#2196F3', color: '#ffffff' }"
+        ></p-avatar>
+      </td>
+
+      <td>{{ contact.firstName }}</td>
+      <td>{{ contact.surname }}</td>
+      <td>{{ contact.phoneNumber }}</td>
+      <td>{{ contact.dateOfBirth | date: "mediumDate" }}</td>
+      <td>{{ contact.address }}</td>
+      <td>{{ contact.iban }}</td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div
+      class="flex align-items-center justify-content-between"
+      style="font-size: 1.5rem"
+    >
+      In total there are {{ total$ | async }} contacts.
+    </div>
+  </ng-template>
+</p-table>

@@ -1,0 +1,77 @@
+<form [formGroup]="createContactForm" (ngSubmit)="submitForm()">
+  <div class="wrapper">
+    <div class="col">
+      <label>First Name:</label>
+      <input
+        style="padding-left: 1rem"
+        formControlName="firstName"
+        type="text"
+        pInputText
+        placeholder="First Name"
+      />
+      <label>Surname:</label>
+      <input
+        style="padding-left: 1rem"
+        formControlName="surname"
+        type="text"
+        pInputText
+        placeholder="Surname"
+      />
+      <label>Phone Number:</label>
+      <p-inputMask
+        [style]="{
+          width: '80%',
+          'margin-top': '.6rem',
+          height: '4rem',
+          'font-size': '1.4rem'
+        }"
+        formControlName="phoneNumber"
+        mask="+999999999999"
+        placeholder="Phone number"
+      ></p-inputMask>
+      <label>Address:</label>
+      <input
+        style="padding-left: 1rem"
+        formControlName="address"
+        type="text"
+        pInputText
+        placeholder="Address"
+      />
+      <label>IBAN:</label>
+      <input
+        style="padding-left: 1rem"
+        formControlName="iban"
+        type="text"
+        pInputText
+        placeholder="IBAN"
+      />
+      <label>Date Of Birth:</label>
+      <p-calendar
+        [style]="{
+          width: '80%',
+          'margin-top': '.6rem',
+          height: '4rem'
+        }"
+        [inputStyle]="{ 'font-size': '1.4rem' }"
+        formControlName="dateOfBirth"
+        placeholder="Date Of Birth"
+      ></p-calendar>
+
+      <div class="button-wrapper">
+        <p-button
+          type="submit"
+          label="Add Contact"
+          [disabled]="!createContactForm.valid"
+          [style]="{
+            'margin-top': '3rem',
+            'font-size': '1.6rem',
+            padding: '1rem'
+          }"
+        ></p-button>
+      </div>
+    </div>
+    <div class="col align-center">
+      <img width="95%" src="./assets/new-contact.svg" alt="" />
+    </div>
+  </div>
+</form>

@@ -1,0 +1,153 @@
+.container {
+  background-color: #f8fbff;
+  display: flex;
+  width: 100%;
+}
+
+.toggle-icon {
+  cursor: pointer;
+}
+
+.sidebar {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  width: 6rem;
+  align-items: center;
+  gap: 2rem;
+  background-color: var(--color-white);
+  transition: width 200ms ease-in-out;
+
+  .sidebar-top .logo > img {
+    height: 4rem;
+    margin-block: 2rem;
+  }
+
+  &-middle {
+    flex-grow: 1;
+    overflow-y: auto;
+    width: 90%;
+    overflow-x: hidden;
+  }
+  &-bottom {
+    width: 90%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    .sidebar-list {
+      .sidebar-link {
+        text-decoration: none;
+        &:hover {
+          background: white;
+        }
+      }
+    }
+  }
+}
+
+.sidebar-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+
+  &-item {
+    .sidebar-link {
+      text-decoration: none;
+      display: flex;
+      padding: 0.8rem;
+      img {
+        width: 2.4rem;
+      }
+
+      &-text {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        color: var(--color-primary);
+        font-size: 1.7rem;
+        transition: opacity 200ms ease-in-out;
+      }
+
+      &.active {
+        background: rgba(28, 115, 231, 0.2);
+        border-radius: 5px;
+      }
+      &:hover {
+        background: rgba(28, 115, 231, 0.2);
+        border-radius: 5px;
+      }
+      &:active {
+        background: rgba(28, 115, 231, 0.2);
+        border-radius: 5px;
+        color: var(--color-primary);
+      }
+    }
+  }
+}
+
+.sidebar.open {
+  width: 20rem;
+  .sidebar-list {
+    align-items: start;
+  }
+
+  .sidebar-list-item {
+    width: 100%;
+  }
+  .sidebar-link-text {
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    color: #091b2b;
+    margin-top: 0.5rem;
+  }
+  &.active {
+    background: #727ca1;
+    border-radius: 0.5rem;
+  }
+
+  .sidebar-link {
+    color: var(--color-primary);
+    gap: 1rem;
+    align-items: center;
+    img {
+      transition: width 200ms ease-in-out;
+      width: 2rem;
+    }
+  }
+
+  .sidebar-middle {
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .sidebar-top .logo > img {
+    height: 8rem;
+    margin-block: 2.8rem;
+  }
+
+  .sidebar-list {
+    gap: 0.4rem;
+  }
+}
+
+.content {
+  height: 100vh;
+  overflow-y: scroll;
+  flex-grow: 1;
+  padding: 2rem 3rem 0 3rem;
+  font-size: 1.6rem;
+}
+
+.header-title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 3rem;
+  color: #1c1d21;
+  margin-bottom: 3rem;
+  line-height: 20px;
+  margin-top: 2rem;
+}

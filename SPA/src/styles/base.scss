@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%; // 1rem = 10px; 10px/16px = 62.5%
+}
+
+:root {
+  --color-primary: #1c73e7;
+  --color-primary-background: #f8fbff;
+  --color-white: white; // I put this variable here, because at some point, if we want to change the pure white color to another one, we can do it easily
+}
+
+body {
+  font-family: Overpass, sans-serif;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ol[class],
+ul[class] {
+  list-style: none;
+  padding: 0;
+}

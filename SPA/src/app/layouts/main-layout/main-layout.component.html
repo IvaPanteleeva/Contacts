@@ -1,0 +1,70 @@
+<div class="container">
+  <aside class="sidebar" [ngClass]="(isOpen$ | async) ? 'open' : ''">
+    <div class="sidebar-top">
+      <a class="logo"
+        ><img src="./assets/logo.png" alt="Logo" loading="lazy"
+      /></a>
+    </div>
+    <div class="sidebar-middle">
+      <ul class="sidebar-list">
+        <li class="sidebar-list-item">
+          <a
+            class="sidebar-link"
+            [routerLink]="'/contacts/list'"
+            routerLinkActive="active"
+          >
+            <i class="pi pi-user" style="font-size: 2rem"></i>
+            <div class="sidebar-link-text">All Contacts</div>
+          </a>
+        </li>
+        <li class="sidebar-list-item">
+          <a
+            class="sidebar-link"
+            [routerLink]="'/contacts/new'"
+            routerLinkActive="active"
+          >
+            <i class="pi pi-user-plus" style="font-size: 2rem"></i>
+            <div class="sidebar-link-text">New Contact</div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="sidebar-bottom">
+      <ul class="sidebar-list">
+        <li
+          class="sidebar-list-item"
+          *ngIf="isOpen$ | async"
+          (click)="toggleOpenCloseSidebar()"
+        >
+          <a class="sidebar-link">
+            <i class="pi pi-angle-double-left" style="font-size: 2rem"></i>
+            <div class="sidebar-link-text">Toggle sidebar</div>
+          </a>
+        </li>
+        <li
+          class="sidebar-list-item"
+          *ngIf="!(isOpen$ | async)"
+          (click)="toggleOpenCloseSidebar()"
+        >
+          <a class="sidebar-link">
+            <i class="pi pi-angle-double-right" style="font-size: 2rem"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="df f-ai-c f-jc-sb">
+      <div>
+        <div class="df f-ai-c f-g-1">
+          <h3 class="header-title">
+            {{ pageHeaderTitle$ | async }}
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <router-outlet></router-outlet>
+  </main>
+</div>
